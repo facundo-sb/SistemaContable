@@ -1,0 +1,40 @@
+/* Estilo para la barra lateral */
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    background-color: #f8f9fa;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos horizontalmente */
+}
+
+.sidebar a {
+    width: 80%; /* Ancho de los botones */
+    text-align: center; /* Centrar el texto en los botones */
+    margin-bottom: 10px; /* Espacio entre los botones */
+}
+
+/* Contenido principal */
+.content {
+    margin-left: 220px; /* Margen para dar espacio a la barra lateral */
+    padding: 20px;
+}
+
+/* Para campos de solo lectura */
+.readonly-field {
+    background-color: #e9ecef; /* Fondo gris claro */
+    border: 1px solid #ced4da; /* Borde gris claro */
+    cursor: not-allowed; /* Cambia el cursor para indicar no editable */
+}
+
+/* Centrar verticalmente el login */
+.full-height {
+    height: 100vh; /* Altura completa de la pantalla */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

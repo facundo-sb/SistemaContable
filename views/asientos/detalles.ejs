@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Asiento</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Detalles del Asiento</h2>
+
+        <% if (movimientos.length > 0) { %>
+            <table class="table table-bordered mt-3">
+                <thead>
+                    <tr>
+                        <th>Cuenta</th>
+                        <th>Debe</th>
+                        <th>Haber</th>
+                        <th>Saldo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% movimientos.forEach(movimiento => { %>
+                        <tr>
+                            <td><%= movimiento.cuenta_nombre %></td>
+                            <td><%= movimiento.debe %></td>
+                            <td><%= movimiento.haber %></td>
+                            <td><%= movimiento.saldo %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No hay movimientos registrados para este asiento.</p>
+        <% } %>
+        
+        <div class="text-center mt-3">
+            <a href="/asientos/listar" class="btn btn-secondary">Volver a la lista de asientos</a>
+        </div>
+    </div>
+</body>
+</html>

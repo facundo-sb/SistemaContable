@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Asiento</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Registrar Asiento</h2>
+        <form id="asientoForm">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="fecha_asiento">Fecha:</label>
+                        <input type="date" class="form-control" id="fecha_asiento" name="fecha_asiento" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="descripcion">Descripción:</label>
+                        <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripción" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cuenta">Cuenta:</label>
+                <div class="input-group">
+                    <select class="form-control" id="cuenta" name="cuentas[0][id_cuenta]" required>
+                        <% cuentas.forEach(cuenta => { %>
+                            <option value="<%= cuenta.id %>"><%= cuenta.nombre %></option>
+                        <% }); %>
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="planCuentasBtn">Plan de Cuentas</button>
+                        <button class="btn btn-outline-secondary" type="button" id="agregarCuentaBtn">Agregar Cuenta</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Monto:</label>
+                <div class="input-group">
+                    <input type="number" class="form-control" id="monto" placeholder="Ingrese monto">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <input type="radio" name="tipo" value="debe" checked> Debe
+                        </div>
+                        <div class="input-group-text">
+                            <input type="radio" name="tipo" value="haber"> Haber
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="agregarMovimiento">Agregar Movimiento</button>
+
+            <!-- Tabla de movimientos -->
+            <table class="table mt-3">
+                <thead>
+                    <tr>
+                        <th>Cuenta</th>
+                        <th>Debe</th>
+                        <th>Haber</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="movimientosTable">
+                    <!-- Aquí se irán agregando los movimientos -->
+                </tbody>
+            </table>
+
+            <div class="form-group text-right">
+                <button type="button" class="btn btn-secondary">Cancelar</button>
+                <button type="submit" class="btn btn-success">Registrar asiento</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        let movimientos = [];
+
+        document.getElementById('agregarMovimiento').addEventListener('click', function() {
+            const cuentaSelect = document.querySelector('select[name="cuentas[0][id_cuenta]"]');
+            const cuentaTexto = cuentaSelect.options[cuentaSelect.selectedIndex].text;
+            const cuentaId = cuentaSelect.value;
+            const monto = document.getElementById('monto').value;
+            const tipo = document.querySelector('input[name="tipo"]:checked').value;
+
+            if (!cuentaId || monto === '') {
+                alert('Seleccione una cuenta y un monto válido.');
+                return;
+            }
+
+            movimientos.push({
+                cuenta_id: cuentaId,
+                debe: tipo === 'debe' ? parseFloat(monto) : 0,
+                haber: tipo === 'haber' ? parseFloat(monto) : 0
+            });
+
+            const newRow = `
+                <tr>
+                    <td>${cuentaTexto}</td>
+                    <td>${tipo === 'debe' ? monto : ''}</td>
+                    <td>${tipo === 'haber' ? monto : ''}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm eliminarMovimiento">Eliminar</button>
+                    </td>
+                </tr>
+            `;
+
+            document.getElementById('movimientosTable').insertAdjacentHTML('beforeend', newRow);
+
+            // Limpia el campo de monto y establece como no obligatorio
+            document.getElementById('monto').value = '';
+        });
+
+        document.getElementById('asientoForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const descripcion = document.getElementById('descripcion').value;
+            const fecha_asiento = document.getElementById('fecha_asiento').value;
+
+            // Valida que haya al menos un movimiento
+            if (movimientos.length === 0) {
+                alert('Agrega al menos un movimiento antes de registrar el asiento.');
+                return;
+            }
+
+            const data = {
+                descripcion,
+                fecha_asiento,
+                movimientos
+            };
+
+            fetch('/asientos/agregar-asiento', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(() => {
+                // Redirige a la página deseada después de registrar el asiento
+                window.location.href = '/dashboard';
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

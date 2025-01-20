@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Asientos</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Lista de Asientos</h2>
+        <div class="text-right mb-3">
+            <a href="/asientos" class="btn btn-primary">Registrar Nuevo Asiento</a>
+            <a href="/dashboard" class="btn btn-primary">Pagina principal</a>
+        </div>
+        
+        <% if (asientos.length > 0) { %>
+            <table class="table table-bordered mt-3">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Descripción</th>
+                        <th>Usuario ID</th>
+                        <th>Detalles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% asientos.forEach(asiento => { %>
+                        <tr>
+                            <td>
+                                <% 
+                                const fecha = new Date(asiento.fecha);
+                                const dia = String(fecha.getDate()).padStart(2, '0');
+                                const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+                                const año = fecha.getFullYear();
+                                const fechaFormateada = `${dia}/${mes}/${año}`;
+                                %>
+                                <%= fechaFormateada %>
+                            </td>
+                            <td><%= asiento.descripcion %></td>
+                            <td><%= asiento.usuario_id %></td>
+                            <td>
+                                <!-- Botón de Detalles con enlace dinámico -->
+                                <a href="/asientos/detalles/<%= asiento.id %>" class="btn btn-info btn-sm">Detalles</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No hay asientos registrados.</p>
+        <% } %>
+    </div>
+</body>
+</html>

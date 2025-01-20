@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+<%- include('partials/sidebar') %>
+<div class="content">
+    <div class="container mt-5">
+        <h1 class="mb-3">Bienvenido al Dashboard</h1>
+        <p class="mb-3">Tu rol es: <strong><%= role%></strong></p>
+        <div class="row mt-4">
+            <!-- Panel for Administrators -->
+            <% if (role === 'Administrador') { %>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-header">
+                            Cuentas
+                        </div>
+                        <div class="card-body">
+                            <a href="/cuentas" class="btn btn-primary me-2">Administrar Cuentas</a>
+                            <a href="/cuentas/plan" class="btn btn-primary me-2">Visualizar Plan de Cuentas</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-header">
+                            Asientos
+                        </div>
+                        <div class="card-body">
+                            <a href="/asientos/reporte-librod" class="btn btn-primary me-2">Reporte libro diario</a>
+                            <a href="/asientos/reporte-librom" class="btn btn-primary me-2">Reporte libro mayor</a>
+                            <a href="/asientos" class="btn btn-primary me-2">Agregar Asiento</a>
+                            <a href="/asientos/listar" class="btn btn-primary me-2">Listar Asientos</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-header">
+                            Panel de Administración
+                        </div>
+                        <div class="card-body">
+                            <a href="/register" class="btn btn-primary">Registrar nuevo usuario</a>
+                            <a href="/admin" class="btn btn-secondary">Ir al Panel de Administración</a>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+            <!-- Panel for Regular Users -->
+            <% if (role === 'Usuario') { %>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-header">
+                            Opciones de Usuario
+                        </div>
+                        <div class="card-body">
+                            <a href="/agregar-asiento" class="btn btn-primary me-2">Agregar Asiento</a>
+                            <a href="/cuentas/plan" class="btn btn-primary me-2">Visualizar Plan de Cuentas</a>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+
+            <!-- Opción común para cerrar sesión -->
+            <a href="/logout" class="btn btn-danger me-2 mb-3">Cerrar Sesión</a>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
