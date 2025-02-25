@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/controllers/asientosController.js" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/controllers/cuentasController.js" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/routes/authRoutes.js" dialect="MySQL" />
+    <file url="PROJECT" dialect="MySQL" />
+  </component>
+</project>
