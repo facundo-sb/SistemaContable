@@ -43,7 +43,7 @@ CREATE TABLE `Cuentas` (
 
 LOCK TABLES `Cuentas` WRITE;
 /*!40000 ALTER TABLE `Cuentas` DISABLE KEYS */;
-INSERT INTO `Cuentas` VALUES (6,100,'Activo',NULL,0,'Ac',0.00,1),(15,110,'Caja y Bancos',6,0,'Ac',0.00,1),(16,120,'Créditos',6,0,'Ac',0.00,1),(17,130,'Bienes de cambio',6,0,'Ac',0.00,1),(18,140,'Bienes de uso',6,0,'Ac',0.00,1),(37,111,'Caja',15,1,'Ac',3002.00,1),(38,112,'Banco plazo fijo',15,1,'Ac',0.00,1),(39,113,'Banco c/c',15,1,'Ac',0.00,1),(40,121,'Deudores por ventas',16,1,'Ac',-2.00,1),(41,122,'Documentos a cobrar',16,1,'Ac',900.00,1),(42,123,'Valores a depositar',16,1,'Ac',0.00,1),(43,131,'Mercaderias',17,1,'Ac',0.00,1),(44,141,'Inmuebles',18,1,'Ac',0.00,1),(45,142,'Rodados',18,1,'Ac',0.00,1),(46,143,'Instalaciones',18,1,'Ac',0.00,1),(47,200,'Pasivo',NULL,0,'Pa',0.00,1),(48,300,'Patrimonio',NULL,0,'Pm',0.00,1),(49,400,'Ingresos',NULL,0,'R+',0.00,1),(50,500,'Egresos',NULL,0,'R-',0.00,1),(51,210,'Deudas Comerciales',47,0,'Pa',0.00,1),(52,211,'Proveedores',51,1,'Pa',0.00,1),(53,212,'Sueldos a Pagar',51,1,'Pa',0.00,1),(54,220,'Deudas Fiscales',47,0,'Pa',0.00,1),(55,221,'Impuestos a Pagar',54,1,'Pa',0.00,1),(56,222,'Moratorias',54,1,'Pa',0.00,1),(57,230,'Prestamos Bancarios',47,1,'Pa',0.00,1),(58,310,'Capital',48,1,'Pm',0.00,1),(59,320,'Resultados',48,1,'Pm',0.00,1),(60,410,'Ventas',49,0,'R+',0.00,1),(61,411,'Ventas',60,1,'R+',0.00,1),(62,420,'Otros ingresos',49,0,'R+',0.00,1),(63,430,'Intereses Ganados',49,1,'R+',0.00,1),(64,510,'Costo de Mercadería Vendida',50,1,'R-',0.00,1),(65,520,'Impuestos',50,1,'R-',0.00,1),(66,530,'Sueldos',50,1,'R-',0.00,1),(67,540,'Intereses',50,1,'R-',0.00,1),(68,550,'Alquileres',50,1,'R-',0.00,1),(70,132,'asdas',17,1,'Ac',0.00,1);
+INSERT INTO `Cuentas` VALUES (6,100,'Activo',NULL,0,'Ac',0.00,1),(15,110,'Caja y Bancos',6,0,'Ac',0.00,1),(16,120,'Créditos',6,0,'Ac',0.00,1),(17,130,'Bienes de cambio',6,0,'Ac',0.00,1),(18,140,'Bienes de uso',6,0,'Ac',0.00,1),(37,111,'Caja',15,1,'Ac',3002.00,1),(38,112,'Banco plazo fijo',15,1,'Ac',0.00,1),(39,113,'Banco c/c',15,1,'Ac',0.00,1),(40,121,'Deudores por ventas',16,1,'Ac',-2.00,1),(41,122,'Documentos a cobrar',16,1,'Ac',900.00,1),(42,123,'Valores a depositar',16,1,'Ac',0.00,1),(43,131,'Mercaderias',17,1,'Ac',0.00,1),(44,141,'Inmuebles',18,1,'Ac',0.00,1),(45,142,'Rodados',18,1,'Ac',0.00,1),(46,143,'Instalaciones',18,1,'Ac',0.00,1),(47,200,'Pasivo',NULL,0,'Pa',0.00,1),(48,300,'Patrimonio',NULL,0,'Pm',0.00,1),(49,400,'Ingresos',NULL,0,'R+',0.00,1),(50,500,'Egresos',NULL,0,'R-',0.00,1),(51,210,'Deudas Comerciales',47,0,'Pa',0.00,1),(52,211,'Proveedores',51,1,'Pa',0.00,1),(53,212,'Sueldos a Pagar',51,1,'Pa',0.00,1),(54,220,'Deudas Fiscales',47,0,'Pa',0.00,1),(55,221,'Impuestos a Pagar',54,1,'Pa',0.00,1),(56,222,'Moratorias',54,1,'Pa',0.00,1),(57,230,'Prestamos Bancarios',47,1,'Pa',0.00,1),(58,310,'Capital',48,1,'Pm',0.00,1),(59,320,'Resultados',48,1,'Pm',0.00,1),(60,410,'Ventas',49,0,'R+',0.00,1),(61,411,'Ventas',60,1,'R+',0.00,1),(62,420,'Otros ingresos',49,0,'R+',0.00,1),(63,430,'Intereses Ganados',49,1,'R+',0.00,1),(64,510,'Costo de Mercadería Vendida',50,1,'R-',0.00,1),(65,520,'Impuestos',50,1,'R-',0.00,1),(66,530,'Sueldos',50,1,'R-',0.00,1),(67,540,'Intereses',50,1,'R-',0.00,1),(68,550,'Alquileres',50,1,'R-',0.00,1);
 /*!40000 ALTER TABLE `Cuentas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -71,7 +71,6 @@ CREATE TABLE `asientos` (
 
 LOCK TABLES `asientos` WRITE;
 /*!40000 ALTER TABLE `asientos` DISABLE KEYS */;
-INSERT INTO `asientos` VALUES (39,'2025-01-08','prueba6',7),(40,'2025-01-09','prueba111',7);
 /*!40000 ALTER TABLE `asientos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,7 +102,6 @@ CREATE TABLE `cuenta_asiento` (
 
 LOCK TABLES `cuenta_asiento` WRITE;
 /*!40000 ALTER TABLE `cuenta_asiento` DISABLE KEYS */;
-INSERT INTO `cuenta_asiento` VALUES (55,37,39,1.00,0.00,3001.00),(56,40,39,0.00,1.00,-1.00),(57,37,40,1.00,0.00,3002.00),(58,40,40,0.00,1.00,-2.00);
 /*!40000 ALTER TABLE `cuenta_asiento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,7 +195,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   KEY `fk_rol` (`rol_id`),
   CONSTRAINT `fk_rol` FOREIGN KEY (`rol_id`) REFERENCES `roles` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -206,7 +204,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (7,'asd','$2a$10$XTMMZbMbQWiTOmEoxO/Hl.PQqLY00eBElPU8/IeQUt./KSq1OmrLi','asd@asd','2025-01-03 03:03:47',1);
+INSERT INTO `users` VALUES (8,'usuario1','$2a$10$dH5vw7XinCuXPw6eZJHQF.P/bsoJwXXnRBXQpDnk3XhGuErZv87di','usuario@usuario','2025-02-26 17:13:21',1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -219,4 +217,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-02-25  0:41:27
+-- Dump completed on 2025-02-26 15:54:47
