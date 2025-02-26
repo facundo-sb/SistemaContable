@@ -1,0 +1,39 @@
+
+
+services:
+   mysqldb: 
+    image : mysql
+    
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=asd
+      - MYSQL_DATABASE=sistema_bd
+    ports:
+      - "3307:3306"
+    networks:
+      - mi_red
+    volumes:
+      - ./mysql-init:/docker-entrypoint-initdb.d  # puerto en el que me voy a conectar , enlazado con el puerto interno de mysql internamente va a estar en ese puerto
+      
+   app:
+    build: .
+    restart: always
+    depends_on:
+      - mysqldb
+  
+    environment:
+      DB_HOST: mysqldb
+      DB_USER: root
+      DB_PASSWORD: asd
+      DB_NAME: sistema_bd
+      
+    links:
+      - mysqldb
+    ports:
+      - 3001:3001
+    networks:
+      - mi_red
+
+networks:
+  mi_red:
+    driver: bridge   
