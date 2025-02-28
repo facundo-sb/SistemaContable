@@ -1,1 +1,2 @@
-database/bd
+node_modules/
+.env

@@ -6,8 +6,8 @@ services:
     
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=asd
-      - MYSQL_DATABASE=sistema_bd
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
     ports:
       - "3307:3306"
     networks:
@@ -23,8 +23,8 @@ services:
   
     environment:
       DB_HOST: mysqldb
-      DB_USER: root
-      DB_PASSWORD: asd
+      DB_USER: ${MYSQL_USER}
+      DB_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       DB_NAME: sistema_bd
       
     links:
