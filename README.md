@@ -5,7 +5,7 @@ y administración de libros mayores
 -----> 🚀Para correr la aplicacion 
 # 1- Clonar el repositorio 
 ```bash
-git clone https://github.com/facundo-sb/sistema-contable.git
+git clone https://github.com/facundo-sb/SistemaContable
 cd sistema-contable
 
 2- Crear un archivo .env en la raiz del proyecto y configurar las siguientes variables :
