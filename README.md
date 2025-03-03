@@ -17,6 +17,9 @@ MYSQL_PORT= un_puerto
 bash:
 docker-compose up --build
 ------------------------------------------------
+Para poder entrar al Sistema como Administrador
+usuario = usuario1
+contraseña = usuario1
 
 ✅Un contenedor para la base de datos MySQL.
 ✅Un contenedor para la aplicación Node.js.
