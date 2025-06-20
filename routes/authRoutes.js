@@ -5,6 +5,7 @@ const connection = require('../database/bd');
 
 
 //Ruta para registrar
+router.get ('/', authController.formLogin);
 router.post('/register', authController.isAdmin, authController.register);
 // Ruta para procesar el login
 router.post('/login', authController.login);
